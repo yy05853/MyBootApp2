@@ -10,11 +10,13 @@
 
 </head>
 <body>
-	<h1>勤務表</h1>
+	<h1>学習時間記録表</h1>
 	<p th:text="${msg}">please wait...</p>
 	<form method="post" action="/">
-		出勤　<input type="time" name="text1" th:value="${value}" />
-		退勤　<input type="time" name="text2" th:value="${value2}" />
+		学習開始　<input type="time" name="text1" th:value="${value}" />
+		学習終了　<input type="time" name="text2" th:value="${value2}" />
+		休憩開始　<input type="time" name="text3" th:value="${value3}" />
+		休憩終了　<input type="time" name="text4" th:value="${value4}" />
 		<input type="submit" value="Click" />
 	</form>
 
