@@ -4,22 +4,66 @@
 	<title>top page</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<style>
-	h1 { font-size:18pt; font-weight:bold; color:gray;}
+	h1 { font-size:18pt; font-weight:bold; color:gray; }
 	body { font-size:13pt; color:gray; margin:5px 25px; }
+	pre { border: solid 3px #ddd; padding: 10px; }
+	tr { margin:5px; }
+	th { padding:5px; color:white; background:darkgray; }
+	td { padding:5px; color:black; background:#f0f0f0; }
 	</style>
-
 </head>
+
 <body>
-	<h1>学習時間記録表</h1>
-	<p th:text="${msg}">please wait...</p>
-	<form method="post" action="/">
-		学習開始　<input type="time" name="text1" th:value="${value}" />
-		学習終了　<input type="time" name="text2" th:value="${value2}" />
-		休憩開始　<input type="time" name="text3" th:value="${value3}" />
-		休憩終了　<input type="time" name="text4" th:value="${value4}" />
-		<input type="submit" value="Click" />
+	<h1 th:text="#{content.title}">Helo page</h1>
+	<table>
+	<form method="post" action="/" th:object="${formModel}">
+	<tr><td><label for="name">名前</label></td>
+		<td><input type="text" name="name" th:value="*{name}" /></td></tr>
+	<tr><td><label for="age">年齢</label></td>
+		<td><input type="text" name="age" th:value="*{age}" /></td></tr>
+	<tr><td><label for="mail">メール</label></td>
+		<td><input type="text" name="mail" th:value="*{mail}" /></td></tr>
+	<tr><td><label for="memo">メモ</label></td>
+	<td><textarea name="memo" th:text="*{memo}" cols="20" rows="5"></textarea></td></tr>
+	<tr><td></td><td><input type="submit" /></td></tr>
 	</form>
+	</table>
+
+	<hr />
+	<table>
+	<tr><th>ID</th><th>名前</th></tr>
+	<tr th:each="obj : ${datalist}">
+		<td th:text="${obj.id}"></td>
+		<td th:text="${obj.name}"></td>
+	</table>
 
 </body>
 
 </html>
+
+
+<!-- <!DOCTYPE HTML> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
+<!-- <head> -->
+<!-- 	<title>top page</title> -->
+<!-- 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
+<!-- 	<style> -->
+/* 	h1 { font-size:18pt; font-weight:bold; color:gray;} */
+/* 	body { font-size:13pt; color:gray; margin:5px 25px; } */
+<!-- 	</style> -->
+
+<!-- </head> -->
+<!-- <body> -->
+<!-- 	<h1>学習時間記録表</h1> -->
+<!-- 	<p th:text="${msg}">please wait...</p> -->
+<!-- 	<form method="post" action="/"> -->
+<!-- 		学習開始　<input type="time" name="text1" th:value="${value}" /> -->
+<!-- 		学習終了　<input type="time" name="text2" th:value="${value2}" /> -->
+<!-- 		休憩開始　<input type="time" name="text3" th:value="${value3}" /> -->
+<!-- 		休憩終了　<input type="time" name="text4" th:value="${value4}" /> -->
+<!-- 		<input type="submit" value="Click" /> -->
+<!-- 	</form> -->
+
+<!-- </body> -->
+
+<!-- </html> -->
